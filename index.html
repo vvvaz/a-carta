@@ -12,7 +12,7 @@ body {
 }
 
 /* 🌌 ESTRELAS */
-.stars span {
+.star {
     position: absolute;
     width: 2px;
     height: 2px;
@@ -32,7 +32,7 @@ body {
     bottom: 0;
     width: 200%;
     height: 200px;
-    background: linear-gradient(to top, rgba(80,0,120,0.5), transparent);
+    background: linear-gradient(to top, rgba(100,0,150,0.5), transparent);
     border-radius: 50%;
     animation: waveMove 10s linear infinite;
 }
@@ -95,16 +95,16 @@ h1 {
     color: #c77dff;
 }
 
-/* ✨ destaque */
-.destaque {
-    color: #c77dff;
-    text-shadow: 0 0 8px #8a2be2;
-}
-
 .assinatura {
     text-align: right;
     margin-top: 20px;
     color: #c77dff;
+}
+
+/* ✨ destaque */
+.destaque {
+    color: #c77dff;
+    text-shadow: 0 0 8px #8a2be2;
 }
 
 /* 💖 corações */
@@ -124,8 +124,6 @@ h1 {
 
 <body>
 
-<div class="stars"></div>
-
 <div class="wave"></div>
 <div class="wave"></div>
 
@@ -142,14 +140,15 @@ h1 {
 <script>
 // ⭐ estrelas
 for (let i = 0; i < 120; i++) {
-    let star = document.createElement("span");
+    let star = document.createElement("div");
+    star.className = "star";
     star.style.left = Math.random()*100 + "%";
     star.style.top = Math.random()*100 + "%";
     star.style.animationDuration = (Math.random()*3+2)+"s";
     document.body.appendChild(star);
 }
 
-// ✍️ texto com destaque
+// ✍️ texto completo (COM HTML funcionando)
 const texto = `O Mar, oh grandioso mar,
 faz com que eu te ame cada vez mais.
 
@@ -165,33 +164,40 @@ nem o que sinto.
 Olhando para o céu estrelado,
 pego-me pensando em um amor passageiro…
 
+Eu não acreditava em tuas palavras,
+pois era cedo — e eu tinha medo.
+
 Gosto quando falas de teus sentimentos,
-quando te sentes seguro para me contar teus medos.
+quando te sentes seguro para me contar
+teus maiores medos e segredos.
+
+Isso me mostra que não há mal algum em ti.
+
+É impressionante a confiança que tens em mim
+em tão pouco tempo —
+espanta-me tamanha determinação
+em laços ainda tão jovens e delicados.
 
 O que quero dizer é…
 
 <span class="destaque">o amor que sinto por ti não é raso</span>:
 é explosivo, intenso, verdadeiro e cúmplice.
 
+Nunca imaginei mergulhar
+nesse mar profundo que me apresentaste.
+
+Eu te agradeço.
+
 <span class="destaque">Eu te amo</span> —
-amo esse amar novo,
+amo esse amar novo, desconhecido,
 que agora me pertence.`;
 
-// ✍️ efeito digitando
-let i = 0;
-function escrever() {
-    if (i < texto.length) {
-        document.getElementById("texto").innerHTML += texto.charAt(i).replace(/\n/g,"<br>");
-        i++;
-        setTimeout(escrever, 25);
-    }
-}
-
-// 💌 abrir carta
+// 💌 abrir carta (SEM BUG)
 function abrirCarta() {
     document.querySelector(".envelope").style.display = "none";
+    let el = document.getElementById("texto");
+    el.innerHTML = texto.replace(/\n/g,"<br>");
     document.getElementById("carta").style.display = "block";
-    escrever();
 }
 
 // 💖 corações
