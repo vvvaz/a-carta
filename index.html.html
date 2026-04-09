@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carta</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(#050505, #0a0a1a);
+        }
+
+        /* ⭐ ESTRELAS */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .stars span {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            animation: animStar linear infinite;
+        }
+
+        @keyframes animStar {
+            from {
+                transform: translateY(0px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-1000px);
+                opacity: 0;
+            }
+        }
+
+        /* 🌊 MAR */
+        .wave {
+            position: fixed;
+            bottom: 0;
+            width: 200%;
+            height: 200px;
+            background: rgba(0, 50, 100, 0.4);
+            border-radius: 50%;
+            animation: waveMove 10s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            animation-duration: 15s;
+            opacity: 0.5;
+        }
+
+        @keyframes waveMove {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* 📜 CARTA */
+        .carta {
+            position: relative;
+            z-index: 2;
+            background: #111;
+            padding: 40px;
+            width: 600px;
+            border-radius: 14px;
+            margin: 80px auto;
+
+            box-shadow: 0px 0px 40px rgba(255, 0, 80, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+
+            animation: aparecer 1.5s ease;
+            transition: 0.3s;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .carta:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 0px 60px rgba(255, 0, 100, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff4d6d;
+        }
+
+        h2 {
+            text-align: center;
+            color: #aaa;
+            font-weight: normal;
+        }
+
+        p {
+            color: #eaeaea;
+            white-space: pre-line;
+            line-height: 1.7;
+        }
+
+        .assinatura {
+            text-align: right;
+            color: #ff4d6d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ⭐ estrelas -->
+    <div class="stars">
+        <script>
+            for (let i = 0; i < 100; i++) {
+                let star = document.createElement("span");
+                star.style.left = Math.random() * 100 + "%";
+                star.style.top = Math.random() * 100 + "%";
+                star.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.querySelector(".stars").appendChild(star);
+            }
+        </script>
+    </div>
+
+    <!-- 🌊 mar -->
+    <div class="wave"></div>
+    <div class="wave"></div>
+
+    <!-- 📜 carta -->
+    <div class="carta">
+        <h1>A Carta..</h1>
+        <h2>Feito por um homem que carrega muito amor dentro de si.</h2>
+
+        <p>
+O Mar, oh grandioso mar,
+faz com que eu te ame cada vez mais.
+Minha chama por ti é como as ondas do Sul: constante,
+intensa como os ventos fortes de uma grande montanha.
+
+Eu sei… poderia ser menos —
+pensar menos, sentir menos —
+mas não me convém esconder quem sou
+nem o que sinto.
+
+Olhando para o céu estrelado,
+pego-me pensando em um amor passageiro…
+Eu não acreditava em tuas palavras,
+pois era cedo — e eu tinha medo.
+
+Gosto quando falas de teus sentimentos,
+quando te sentes seguro para me contar
+teus maiores medos e segredos.
+Isso me mostra que não há mal algum em ti.
+
+É impressionante a confiança que tens em mim
+em tão pouco tempo —
+espanta-me tamanha determinação
+em laços ainda tão jovens e delicados.
+
+O que quero dizer é…
+o amor que sinto por ti não é raso:
+é explosivo, intenso, verdadeiro e cúmplice.
+
+Nunca imaginei mergulhar
+nesse mar profundo que me apresentaste.
+
+Eu te agradeço.
+Eu te amo —
+amo esse amar novo, desconhecido,
+que agora me pertence.
+        </p>
+
+        <div class="assinatura">- Vaz</div>
+    </div>
+
+</body>
+</html>
